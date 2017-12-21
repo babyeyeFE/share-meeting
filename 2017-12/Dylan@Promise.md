@@ -91,8 +91,8 @@ const request = (url) => {
     const xhr = new XMLHttpReuqest()
     xhr.open('GET', url, true)
     xhr.send()
-    xhr.onload = () => resolve(responseText)
-    xhr.onerror = () => reject(new Error(responseText))
+    xhr.onload = () => resolve(xhr.responseText)
+    xhr.onerror = () => reject(new Error(xhr.responseText))
   })
 }
 
