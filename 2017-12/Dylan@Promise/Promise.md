@@ -704,7 +704,7 @@ Promise.resolve('foo')
 // bar
 ```
 
-**记住:**永远在`then()`中传递函数
+**记住:** 永远在`then()`中传递函数
 
 # 期待async/await
 
