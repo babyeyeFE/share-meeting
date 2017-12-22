@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  const request = (url) => {
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest()
+      xhr.open('GET', url, true)
+      xhr.send()
+      // 简约版的
+      xhr.onload = () => resolve(JSON.parse(xhr.responseText))
+      xhr.onerror = () => reject(new Error(xhr.responseText))
+    })
+  }
+</script>
+<!--<script src="1-比较回调地狱和Promise.js"></script>-->
+<!--<script src="4-then中需要做的事.js"></script>-->
+<!--<script src="5-try...catch.js"></script>-->
+<!--<script src="6-error-first.js"></script>-->
+<!--<script src="7-Promise回调地狱.js"></script>-->
+<!--<script src="8-吃掉错误.js"></script>-->
+<!--<script src="9-Promise.all.js"></script>-->
+<!--<script src="10-Promise.race.js"></script>-->
+<script src="11-穿透.js"></script>
+</body>
+</html>
