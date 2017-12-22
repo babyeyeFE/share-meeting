@@ -8,7 +8,7 @@ Promise 是异步编程的一种解决方案，比传统的解决方案——回
 
 Promise是一种封装和组合未来值的易于复用的机制
 
-既然是对象，那么就有**属性**和**方法 ** 
+既然是对象，那么就有**属性**和**方法** 
 
 ## 属性
 
@@ -88,10 +88,10 @@ promise.then(value => {
 ```js
 const request = (url) => {
   return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpReuqest()
+    const xhr = new XMLHttpRequest()
     xhr.open('GET', url, true)
     xhr.send()
-    xhr.onload = () => resolve(xhr.responseText)
+    xhr.onload = () => resolve(JSON.parse(xhr.responseText))
     xhr.onerror = () => reject(new Error(xhr.responseText))
   })
 }
@@ -704,7 +704,7 @@ Promise.resolve('foo')
 // bar
 ```
 
-**记住：**永远在`then()`中传递函数
+**记住:** 永远在`then()`中传递函数
 
 # 期待async/await
 
