@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>post</title>
+
+</head>
+
+<body>
+<form >
+	用户名 : <input id="input" type="text" name="username">   <!--username=hello-->
+    <input type="button" value="注册" id="button">
+</form>
+
+<script>
+let oInput = document.getElementById('button');
+let data = {
+    "gid":352,
+    "uid":27,
+    "score":0
+}
+postData = JSON.stringify(data)
+oInput.onclick = function(){
+  if (window.XMLHttpRequest){
+      xmlhttp=new XMLHttpRequest();    // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+    }else{
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");    // IE6, IE5 浏览器执行代码
+  }
+
+  xmlhttp.onreadystatechange =((responseText)=>{
+        xmlhttp.setRequestHeader("Content-type","application/json;charset=UTF-8");
+
+    if(xmlhttp.readyState==4 && xmlhttp.status==200){
+
+      console.log(xmlhttp.responseText)
+      // console.log(this)
+    }
+  })
+  xmlhttp.open("POST", "http://api.shqeye.com/api/train/stats",true);
+  // xmlhttp.send(data);
+    xmlhttp.send(postData);
+
+}
+
+
+</script>
+</body>
+</html>

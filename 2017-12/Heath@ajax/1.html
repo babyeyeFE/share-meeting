@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>get</title>
+
+</head>
+
+<body>
+<form >
+	用户名 : <input id="input" type="text" name="username">   <!--username=hello-->
+    <input type="button" value="注册" id="button">
+</form>
+
+<script>
+let oInput = document.getElementById('button');
+
+oInput.onclick = function(){
+	if (window.XMLHttpRequest){
+    	xmlhttp=new XMLHttpRequest();    // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+  	}else{
+    	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");    // IE6, IE5 浏览器执行代码
+  }
+  // xmlhttp.setRequestHeader("Content-type","application/json;charset=UTF-8");
+  xmlhttp.onreadystatechange =((responseText)=>{
+
+  	if(xmlhttp.readyState==4 && xmlhttp.status==200){
+  		console.log(xmlhttp.responseText)
+  		// console.log(this)
+  	}
+  })
+
+  xmlhttp.open("GET", "http://api.shqeye.com/api/train/352/top",true);
+  xmlhttp.send({"name":"zhangsan"});
+}
+
+// 0：未初始化。对象已创建，未调用open；
+
+// 1：open方法成功调用，但Sendf方法未调用；
+
+// 2：send方法已经调用，尚未开始接受数据；
+
+// 3：正在接受数据。Http响应头信息已经接受，但尚未接收完成；
+
+// 4：完成，即响应数据接受完成。
+
+</script>
+</body>
+</html>
