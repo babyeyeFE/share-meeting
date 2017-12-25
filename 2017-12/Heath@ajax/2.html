@@ -28,8 +28,6 @@ oInput.onclick = function(){
   }
 
   xmlhttp.onreadystatechange =((responseText)=>{
-        xmlhttp.setRequestHeader("Content-type","application/json;charset=UTF-8");
-
     if(xmlhttp.readyState==4 && xmlhttp.status==200){
 
       console.log(xmlhttp.responseText)
@@ -37,8 +35,10 @@ oInput.onclick = function(){
     }
   })
   xmlhttp.open("POST", "http://api.shqeye.com/api/train/stats",true);
+  xmlhttp.setRequestHeader("Content-type","application/json;charset=UTF-8");
+
   // xmlhttp.send(data);
-    xmlhttp.send(postData);
+  xmlhttp.send(postData);
 
 }
 
