@@ -9,43 +9,6 @@ $(window).ready(function(){
             this.width = this.stage.canvas.width;
             this.height = this.stage.canvas.height;
             this.lastFrame = 0;
-            // if (gameResource) {//如果已加载，不再重复加载
-                this.onLoadingComplete();
-            // } else {
-            //     this.loadResource();
-            // }
-        }
-
-        loadResource() {
-            $("#loading").show();
-            //训练资源第一次，唯一一次赋值
-            gameResource = new createjs.LoadQueue();
-            //加载并发
-            gameResource.setMaxConnections(100);
-            // 关键！---一定要将其设置为 true, 否则不起作用。  
-            gameResource.maintainScriptOrder = true;
-            gameResource.installPlugin(createjs.Sound);
-
-            //添加加载事件
-            gameResource.addEventListener("complete", (ev) => {
-                $("#loading").hide();
-                $("body").addClass("pink-bg");
-                this.onLoadingComplete();
-            });
-            //加载资源路径
-            let loadArr = [
-                { id: "fail", src: "../../static/music/collision/1.mp3"},
-                { id: "wonderful", src: "../../static/music/wonderful.mp3"},
-                { id: "mBG", src: "../../static/music/bg/s12.mp3"},
-            ];
-            loadArr.push({id: "fish",src: "../src2/fu-catch-fish/img/fish.png"})
-
-            //加载
-            gameResource.loadManifest(loadArr);
-        }
-
-        onLoadingComplete() {
-            this.stage.removeAllChildren();
             this.buildWorld();//产生训练场景
             this.render();
         }
@@ -136,7 +99,7 @@ $(window).ready(function(){
         }
 
         buildTargets(){
-            let targetLocations = [{x: 20,y: 50}, {x: 200,y:500}, {x: 800,y:200}];
+            let targetLocations = [{x: 100,y: 50}, {x: 200,y:500}, {x: 800,y:200}, {x: 800,y:400}];
             for(let i=0; i<targetLocations.length;i++){
                 let target = new Target({
                     location: targetLocations[i],
