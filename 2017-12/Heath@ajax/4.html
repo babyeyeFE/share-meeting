@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>jquery-get</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+</head>
+
+<body>
+<form >
+	用户名 : <input id="input" type="text" name="username">   <!--username=hello-->
+    <input type="button" value="注册" id="button">
+</form>
+
+<script>
+let oInput = document.getElementById('button');
+
+oInput.onclick = function(){
+	$.get("http://api.shqeye.com/api/train/352/top",(data)=>{
+    console.log(data)
+  })
+}
+</script>
+</body>
+</html>

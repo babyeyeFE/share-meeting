@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>jquery-ajax</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+</head>
+
+<body>
+<form >
+	用户名 : <input id="input" type="text" name="username">   <!--username=hello-->
+    <input type="button" value="注册" id="button">
+</form>
+
+<script>
+let oInput = document.getElementById('button');
+
+oInput.onclick = function(){
+	$.ajax({
+		password:123,
+		type:"get",
+		username:"www",
+		url:"http://api.shqeye.com/api/train/352/top",
+        success: ((data,textStatus)=>{
+           console.log(textStatus)
+           console.log(data)
+        }),
+        error:(()=>{
+           console.log("false")
+        }),
+	})
+
+
+}
+</script>
+</body>
+</html>

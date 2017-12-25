@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>jquery-post</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+<form >
+	用户名 : <input id="input" type="text" name="username">   <!--username=hello-->
+    <input type="button" value="注册" id="button">
+</form>
+
+<script>
+let oInput = document.getElementById('button');
+
+oInput.onclick = function(){
+  let data = {
+    "gid":352,
+    "uid":27,
+    "score":0
+}
+$(document).ajaxStart(()=>{
+  console.log("ajaxStart")
+}); 
+  $.ajaxPrefilter(()=>{
+  console.log("ajaxPrefilter")
+});
+
+$(document).ajaxStop(()=>{
+  console.log("ajaxStop")
+}); 
+let postData = JSON.stringify(data)
+
+  $.ajaxSetup({contentType:"application/json;charset=UTF-8" });
+  $.post("http://api.shqeye.com/api/train/stats",postData,(data,status)=>{
+    console.log(data);
+    console.log(status)
+  });
+  $(document).ajaxError((event,xhr,options)=>{
+    console.log("ajaxError")
+    console.log(event,xhr,options)
+  })
+  $(document).ajaxSuccess((event,xhr,options)=>{
+    console.log("ajaxSuccess")
+    console.log(event,xhr,options)
+  })
+
+
+
+}
+
+</script>
+</body>
+</html>
