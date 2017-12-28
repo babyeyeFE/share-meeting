@@ -60,40 +60,112 @@ $(window).ready(function(){
         constructor(game) {
             this.game = game;
             this.view = new createjs.Container();
-            this.buildVehicle();
+            this.vehicles = [];
+            this.buildVehicles();
+            this.events();
         }
 
         update(dt){
-            this.vehicle.update();
+            // this.vehicle.repel(this.mouseLocation);
+            // this.vehicle.update();
+            for(let i = 0; i < this.vehicles.length; i++){
+                this.vehicles[i].attract(this.mouseLocation);
+                for(let j = 0; j < this.vehicles.length; j++){
+                    if(i != j) this.vehicles[i].repel(this.vehicles[j].location);
+                }
+                this.vehicles[i].update();
+            }
         }
 
-        buildVehicle(){
-            this.vehicle = new Vehicle();
-            this.view.addChild(this.vehicle.view);
+        events(){
+            this.mouseLocation = new babyEye.Vec2();
+            this.game.stage.addEventListener("stagemousemove",(ev)=>{
+                this.mouseLocation.set(ev.localX, ev.localY);
+            });
+        }
+
+        buildVehicles(){
+            for(let i = 0; i < 10; i++){
+                let vehicle = new Vehicle();
+                this.view.addChild(vehicle.view);
+                this.vehicles.push(vehicle);
+            }
         }
     }
 
     class Vehicle {
         constructor(){
-            this.initX = 50;
-            this.initY = 50;
-            this.vx = 0.5;
-            this.vy = 0.5;
+            // this.initX = 50;
+            // this.initY = 50;
+            // this.vx = 0.5;
+            // this.vy = 0.5;
+            this.maxSpeed = 5;
+            this.location = new babyEye.Vec2(babyEye.randomRange(100,1000),babyEye.randomRange(100,500));
+            this.velocity = new babyEye.Vec2(0.5,1);
+            this.acceleration = new babyEye.Vec2(0.01,0);
             this.buildView();
         }
 
         update(){
-            this.view.x += this.vx;
-            this.view.y += this.vy;
+            // this.view.x += this.vx;
+            // this.view.y += this.vy;
+
+            this.velocity.add(this.acceleration);
+            this.velocity.limit(3);
+            this.location.add(this.velocity);
+            // this.checkBounds();
+            this.updateView();
+
+            this.clearForce();
+        }
+
+        checkBounds(){
+            let offset = 50;
+            if(this.location.x > 1280 + offset){
+                this.location.x = 0;
+            }else if(this.location.x < -offset){
+                this.location.x = 1280;
+            }
+
+            if(this.location.y > 720 + offset){
+                this.location.y = 0;
+            }else if(this.location.y < -offset){
+                this.location.y = 720;
+            }
+        }
+
+        attract(loc, scope = 200){
+            let direction = babyEye.Vec2.sub(loc, this.location);
+            if(direction.mag() > scope) return;
+            direction.normalize();
+            direction.mult(this.maxSpeed * 4);
+            this.applyForce(direction);
+        }
+
+        repel(loc, scope = 50){
+            let direction = babyEye.Vec2.sub(this.location, loc);
+            if(direction.mag() > scope) return;
+            direction.normalize();
+            direction.mult(this.maxSpeed);
+            this.applyForce(direction);
+        }
+
+        applyForce(f){
+            this.acceleration.add(f);
+        }
+
+        clearForce(){
+            this.acceleration.set(0,0);
+        }
+
+        updateView(){
+            this.view.set(this.location);
         }
 
         buildView(){
             this.view = new createjs.Shape();
             this.view.graphics.f("red").dc(0,0,10);
-            this.view.set({
-                x: this.initX,
-                y: this.initY
-            })
+            this.view.set(this.location);
         }
     }
 
