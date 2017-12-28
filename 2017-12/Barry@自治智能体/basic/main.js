@@ -87,10 +87,6 @@ $(window).ready(function(){
             this.view.y += this.vy;
         }
 
-        updateView(){
-            this.view.set(this.location);
-        }
-
         buildView(){
             this.view = new createjs.Shape();
             this.view.graphics.f("red").dc(0,0,10);
