@@ -118,13 +118,13 @@ Service  worker  实现离线缓存及消息推送
 
 原理
 
-![v2-236d17f6badc3875237f4468c17dc501_hd](/Users/anne/Desktop/v2-236d17f6badc3875237f4468c17dc501_hd.jpg)
+![sw](/Users/anne/Desktop/sw.jpg)
 
 生命周期
 
-![粘贴图片1](/Users/anne/Desktop/粘贴图片1.png)
+![swcircle1](/Users/anne/Desktop/swcircle1.png)
 
-![粘贴图片](/Users/anne/Desktop/粘贴图片.png)
+![swcircle](/Users/anne/Desktop/swcircle.png)
 
 index.html
 
