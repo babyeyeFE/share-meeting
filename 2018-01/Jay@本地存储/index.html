@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    
+    得分：<input type="text" id="name"/>
+   <input type="button" value="提交" onclick="onClick(1)"/><input type="button" value="显示Key" onclick="onClick(2)" /><input type="button" value="删除Item" onclick="onClick(3)" /><input type="button" value="全部清除" onclick="onClick(4)" />
+   <p></p>
+    输出：<input type="text" id="show"/>
+    <script>
+        localStorage.setItem("train", "融合1");
+        document.getElementById("show").value = localStorage.getItem("score");
+
+        function onClick(n) {
+            switch (n) {
+                case 1:
+                    localStorage.setItem("score", document.getElementById("name").value);
+                    document.getElementById("show").value = localStorage.getItem("score");
+                    break;
+                case 2:
+                    document.getElementById("show").value = localStorage.key(0);
+                    break;
+                case 3:
+                    localStorage.removeItem("score");
+                    document.getElementById("show").value = localStorage.getItem("score");
+                    break;
+                case 4:
+                    localStorage.clear();
+            }
+        }
+    </script>
+</body>
+</html>
