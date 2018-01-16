@@ -30,8 +30,30 @@ oInput.onclick = function(){
   	}
   })
 
-  xmlhttp.open("GET", "http://api.shqeye.com/api/train/352/top",true);
-  xmlhttp.send({"name":"zhangsan"});
+  xmlhttp.open("http://fanyi.baidu.com/get",true);
+  // &text="+sound + "&spd=5&source=web"
+  xmlhttp.send({"lan":"zh","text":"dog","spd":5,"source":"web"});
+  // xmlhttp.send({"name":"zhangsan"});
+}
+
+function ajax(){
+    if (window.XMLHttpRequest){
+      xmlhttp=new XMLHttpRequest();    // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+    }else{
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");    // IE6, IE5 浏览器执行代码
+  }
+  // xmlhttp.setRequestHeader("Content-type","application/json;charset=UTF-8");
+  xmlhttp.onreadystatechange =((responseText)=>{
+
+    if(xmlhttp.readyState==4 && xmlhttp.status==200){
+      console.log(xmlhttp.responseText)
+      // console.log(this)
+    }
+  })
+
+  xmlhttp.open("http://fanyi.baidu.com/gettts",true);
+  // &text="+sound + "&spd=5&source=web"
+  xmlhttp.send({"lan":"zh","text":"dog","spd":5,"source":"web"});
 }
 
 // 0：未初始化。对象已创建，未调用open；
