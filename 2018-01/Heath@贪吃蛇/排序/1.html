@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test1</title>
+    <script src="sort.js"></script>
+</head>
+<body>
+    <script>
+
+        function getLargrArry(num){
+            let arry = [];
+            for(let i = 0;i<num;i++){
+                let randNum = Math.floor(Math.random()*num*2);
+                arry.push(randNum);
+            }
+            return arry;
+        }
+        let sort = new Sort();
+        let arry = getLargrArry(200000);
+        // console.log(arry)
+        let arr1 = arry;
+        let arr2 = arry;
+        let arr3 = arry;
+        let arr4 = arry;
+
+        let date = new Date();
+        let nowDate = date.getTime();
+        // let nowArr2 = sort.bubbleSort(arr2);//
+        // let nowArr4 = sort.insertSort(arr4);//2867
+        let nowArr3 = sort.quickSort(arr3);//79
+        // let nowArr = sort.systemSort(arr1);//64
+
+        
+
+
+
+
+        let ndate = new Date();
+        let newDate = ndate.getTime();
+        let del = newDate - nowDate;
+        console.log(del)
+
+
+
+
+    </script>
+</body>
+</html>

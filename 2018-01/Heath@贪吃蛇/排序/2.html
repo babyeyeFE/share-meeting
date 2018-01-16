@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function getArry (num){
+			let arr = []
+			for (let i = 0;i<num;i++) {
+				arr[i] = i;
+			}
+			return arr;
+		}
+
+		let arr = getArry(100000000);
+
+        let date = new Date();
+        let nowDate = date.getTime();
+
+		let a = arr.pop()
+
+        let ndate = new Date();
+        let newDate = ndate.getTime();
+        let del = newDate - nowDate;
+        console.log(del,a)
+	</script>
+	
+</body>
+</html>
