@@ -1,6 +1,9 @@
 # babyeyeFE-blog
 前端笔记、分享会纪要
 
+## 2018-04-03
+Jay@常用es6简写方法
+
 ## 2018-02-01
 
 Dylan@Generator与异步
