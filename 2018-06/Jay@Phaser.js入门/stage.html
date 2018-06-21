@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="lib/phaser.min.js" ></script>
+</head>
+<body>
+    <div id="container" style="width: 400px; height: 100%; margin: 0 auto"></div>
+    <script>
+        let game = new Phaser.Game(400, 730, Phaser.AUTO, 'container', state);
+        function state(){
+            this.preload = function (){
+                game.load.image('bg', 'assets/bg.png')
+            }
+            this.create = function(){
+                game.stage.setBackgroundColor("#ff0000")
+                game.world.setBounds(0,0,1280,720)
+                game.add.image(0,0,'bg')
+                
+            }
+
+            this.update = function(){
+                let key = game.input.keyboard.createCursorKeys()
+                if(key.right.isDown) game.camera.x +=1
+                else if(key.left.isDown) game.camera.x -=1
+                else if (key.down.isDown) game.camera.y += 1
+                else if (key.up.isDown) game.camera.y -= 1
+
+            }
+        }
+       
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "share-meeting",
+  "version": "1.0.0",
+  "description": "前端笔记、分享会纪要",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/babyeyeFE/share-meeting.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/babyeyeFE/share-meeting/issues"
+  },
+  "homepage": "https://github.com/babyeyeFE/share-meeting#readme",
+  "devDependencies": {
+    "express": "^4.16.3",
+    "socket.io": "^2.1.1"
+  }
+}
